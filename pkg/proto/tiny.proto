@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option go_package = "../pkg/proto";
+
+package proto;
+
+service Shorter {
+  rpc CreateTinyURL (CreateRequest) returns (CreateResponse) {}
+  rpc GetTinyURL (GetRequest) returns (GetResponse) {}
+  rpc SaveUrl (SaveRequest) returns (SaveResponse){}
+}
+
+message CreateRequest {
+  string originalUrl = 1;
+}
+
+message CreateResponse {
+  string shortUrl = 1;
+}
+
+message GetResponse {
+  string originalUrl = 1;
+}
+
+message GetRequest {
+  string shortUrl = 1;
+}
+
+message SaveRequest {
+  string shortUrl = 1;
+  string originalUrl = 2;
+}
+
+message SaveResponse {
+  string shortUrl = 1;
+  string originalUrl = 2;
+}
